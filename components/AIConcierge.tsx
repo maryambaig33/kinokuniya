@@ -21,7 +21,10 @@ export const AIConcierge: React.FC<AIConciergeProps> = ({ books }) => {
   };
 
   useEffect(() => {
-    scrollToBottom();
+    const timeoutId = setTimeout(() => {
+      scrollToBottom();
+    }, 100);
+    return () => clearTimeout(timeoutId);
   }, [messages, isOpen]);
 
   const generateId = () => `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
