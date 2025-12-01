@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Star, CreditCard } from 'lucide-react';
+import { Star, CreditCard } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (

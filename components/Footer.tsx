@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, Twitter, Facebook, Youtube, Mail, ChevronRight } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Youtube, ChevronRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (

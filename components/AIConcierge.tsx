@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles, BookOpen } from 'lucide-react';
+import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 import { getBookRecommendations } from '../services/geminiService';
 import { ChatMessage, Book } from '../types';
 
