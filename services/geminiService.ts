@@ -1,15 +1,9 @@
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
 
-const apiKey = process.env.API_KEY || ''; 
-// In a real app, handle missing API key gracefully, but for this demo we assume it's injected.
-
-const ai = new GoogleGenAI({ apiKey });
+// Initialize the client strictly according to guidelines using process.env.API_KEY
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 export const getBookRecommendations = async (userQuery: string, contextBooks: string): Promise<string> => {
-  if (!apiKey) {
-    return "I'm sorry, I can't connect to the AI service right now (Missing API Key).";
-  }
-
   try {
     const model = 'gemini-2.5-flash';
     const systemInstruction = `You are a helpful, polite, and knowledgeable bookseller at Kinokuniya USA. 

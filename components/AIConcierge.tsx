@@ -10,7 +10,7 @@ interface AIConciergeProps {
 export const AIConcierge: React.FC<AIConciergeProps> = ({ books }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { id: '0', role: 'model', text: 'Irasshaimase! Welcome to Kinokuniya. I am your AI concierge. Looking for a specific manga, novel, or gift? Ask me!' }
+    { id: 'init-0', role: 'model', text: 'Irasshaimase! Welcome to Kinokuniya. I am your AI concierge. Looking for a specific manga, novel, or gift? Ask me!' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isThinking, setIsThinking] = useState(false);
@@ -24,11 +24,13 @@ export const AIConcierge: React.FC<AIConciergeProps> = ({ books }) => {
     scrollToBottom();
   }, [messages, isOpen]);
 
+  const generateId = () => `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
   const handleSend = async () => {
     if (!inputValue.trim()) return;
 
     const userMsg: ChatMessage = {
-      id: Date.now().toString(),
+      id: generateId(),
       role: 'user',
       text: inputValue
     };
@@ -41,7 +43,7 @@ export const AIConcierge: React.FC<AIConciergeProps> = ({ books }) => {
     const responseText = await getBookRecommendations(userMsg.text, context);
 
     const modelMsg: ChatMessage = {
-      id: (Date.now() + 1).toString(),
+      id: generateId(),
       role: 'model',
       text: responseText
     };
