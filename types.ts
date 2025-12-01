@@ -4,7 +4,8 @@ export interface Book {
   titleJp?: string;
   author: string;
   price: number;
-  category: 'Manga' | 'Literature' | 'Art & Design' | 'Stationery' | 'Magazine';
+  memberPrice?: number;
+  category: 'Manga' | 'Japanese Books' | 'English Books' | 'Magazines' | 'Stationery' | 'Gifts' | 'Featured';
   image: string;
   isNew?: boolean;
   isBestSeller?: boolean;

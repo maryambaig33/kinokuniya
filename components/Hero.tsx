@@ -1,59 +1,59 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
-    <div className="relative bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-          <svg
-            className="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
-            fill="currentColor"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <polygon points="50,0 100,0 50,100 0,100" />
-          </svg>
+    <div className="bg-kino-light border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          {/* Main Feature Banner */}
+          <div className="lg:col-span-2 relative rounded-lg overflow-hidden bg-white shadow-sm border border-gray-200 group cursor-pointer">
+             <div className="absolute inset-0 bg-gradient-to-r from-kino-blue to-transparent opacity-90 z-10"></div>
+             <img 
+               src="https://images.unsplash.com/photo-1614849963640-9b93052e8550?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+               alt="Manga Collection" 
+               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+             />
+             <div className="relative z-20 p-8 md:p-12 h-full flex flex-col justify-center items-start text-white">
+                <span className="bg-kino-accent text-white text-xs font-bold px-2 py-1 mb-4 uppercase tracking-wider">Featured</span>
+                <h2 className="text-3xl md:text-5xl font-bold mb-4 font-jp">Manga of the Month</h2>
+                <p className="text-lg text-blue-100 mb-8 max-w-md">Discover the latest hits from Shonen Jump, Kodansha, and indie publishers directly from Japan.</p>
+                <button className="bg-white text-kino-blue px-6 py-3 rounded-sm font-bold hover:bg-gray-100 transition-colors flex items-center">
+                  Shop Manga <ArrowRight size={16} className="ml-2" />
+                </button>
+             </div>
+          </div>
 
-          <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
-              <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">Discover the best of</span>{' '}
-                <span className="block text-kino-blue">Japanese Culture</span>
-              </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Explore our curated collection of Manga, Japanese Literature, Art Books, and unique Stationery imported directly from Japan.
-              </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                <div className="rounded-md shadow">
-                  <a
-                    href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-kino-blue hover:bg-blue-900 md:py-4 md:text-lg transition-colors"
-                  >
-                    Shop New Arrivals
-                  </a>
-                </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <a
-                    href="#"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-kino-blue bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg transition-colors"
-                  >
-                    Find a Store <ArrowRight className="ml-2 w-4 h-4" />
-                  </a>
-                </div>
-              </div>
+          {/* Side Promotions */}
+          <div className="space-y-6 flex flex-col">
+            
+            {/* Membership Card Promo */}
+            <div className="bg-kino-blue rounded-lg overflow-hidden flex-1 shadow-sm border border-gray-200 p-6 flex flex-col justify-center relative">
+               <div className="absolute top-0 right-0 p-4 opacity-10">
+                 <Star size={120} />
+               </div>
+               <h3 className="text-xl font-bold text-white mb-2">Kinokuniya Membership</h3>
+               <p className="text-blue-200 text-sm mb-4">Save 10% on most items every day. Exclusive offers and events for members.</p>
+               <button className="w-fit border border-white/30 text-white px-4 py-2 rounded-sm text-sm hover:bg-white hover:text-kino-blue transition-colors">
+                 Join Today
+               </button>
             </div>
-          </main>
+
+            {/* New Arrivals Promo */}
+            <div className="bg-white rounded-lg overflow-hidden flex-1 shadow-sm border border-gray-200 p-6 flex flex-col justify-center relative">
+               <div className="absolute inset-0 bg-yellow-50/50"></div>
+               <div className="relative z-10">
+                 <h3 className="text-xl font-bold text-gray-900 mb-2 font-jp">New Stationery Arrivals</h3>
+                 <p className="text-gray-600 text-sm mb-4">High-quality pens, notebooks, and washi tape from Japan.</p>
+                 <button className="text-kino-blue font-bold text-sm hover:underline flex items-center">
+                   View Collection <ArrowRight size={14} className="ml-1" />
+                 </button>
+               </div>
+            </div>
+
+          </div>
         </div>
-      </div>
-      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
-          className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-          src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-          alt="Library shelves"
-        />
-        <div className="absolute inset-0 bg-kino-blue mix-blend-multiply opacity-20 lg:hidden"></div>
       </div>
     </div>
   );
