@@ -15,7 +15,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, onCategorySelect }) =
   const navLinks = CATEGORIES.filter(c => c !== 'All');
 
   return (
-    <nav className="sticky top-0 z-50 font-sans shadow-md">
+    <nav className="sticky top-0 z-50 font-sans shadow-md bg-white">
       {/* 1. Top Utility Bar - Gray Background */}
       <div className="bg-gray-100 text-gray-600 text-[11px] py-1.5 px-4 hidden md:block border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -39,7 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, onCategorySelect }) =
       </div>
 
       {/* 2. Main Header - Logo & Search */}
-      <div className="bg-white py-4 md:py-6">
+      <div className="bg-white py-4 md:py-6 relative z-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             
@@ -113,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, onCategorySelect }) =
       </div>
 
       {/* 3. Main Navigation Bar - Blue Background (Official Style) */}
-      <div className="hidden md:block bg-kino-blue text-white shadow-inner">
+      <div className="hidden md:block bg-kino-blue text-white shadow-inner relative z-10">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
             <div className="flex items-center space-x-8 h-12">
               <div className="flex items-center font-bold text-sm tracking-wide cursor-pointer border-r border-blue-900 pr-6 h-full hover:bg-blue-900 transition-colors">
@@ -136,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, onCategorySelect }) =
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 absolute w-full left-0 shadow-xl z-50 h-screen">
+        <div className="md:hidden bg-white border-t border-gray-200 absolute w-full left-0 shadow-xl z-50 h-screen overflow-y-auto pb-20">
           <div className="flex flex-col divide-y divide-gray-100">
             {navLinks.map((link) => (
               <button
