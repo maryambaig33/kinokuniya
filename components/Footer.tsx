@@ -1,93 +1,75 @@
 import React from 'react';
-import { Instagram, Twitter, Facebook, MapPin, Youtube, Mail } from 'lucide-react';
+import { Instagram, Twitter, Facebook, Youtube, Mail, ChevronRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-kino-light border-t border-gray-200 pt-16 pb-8 text-gray-700">
+    <footer className="bg-white border-t border-gray-200 pt-16 pb-8 text-gray-600 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Newsletter Signup */}
-        <div className="border-b border-gray-200 pb-12 mb-12 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-           <div className="mb-6 md:mb-0">
-             <h3 className="text-xl font-bold text-kino-blue mb-2">Subscribe to our Newsletter</h3>
-             <p className="text-sm text-gray-600">Get the latest news on new releases, events, and promotions.</p>
-           </div>
-           <div className="flex w-full md:w-auto max-w-md">
-             <input type="email" placeholder="Enter your email" className="bg-white border border-gray-300 px-4 py-2 w-full md:w-64 focus:outline-none focus:border-kino-blue" />
-             <button className="bg-kino-blue text-white px-6 py-2 font-bold hover:bg-blue-900 transition-colors">Subscribe</button>
-           </div>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
-          <div className="col-span-2 lg:col-span-2 pr-8">
-            <div className="flex flex-col mb-4">
-               <span className="font-bold text-2xl text-kino-blue tracking-wide">KINOKUNIYA</span>
-               <span className="text-sm text-gray-500 font-jp tracking-widest mt-1">紀伊國屋書店</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          
+          {/* Column 1: Brand */}
+          <div className="space-y-6">
+            <div className="flex flex-col items-start">
+               <span className="font-bold text-xl text-kino-blue tracking-wide font-serif">KINOKUNIYA</span>
+               <span className="text-xs text-gray-400 font-jp tracking-[0.2em] mt-1">紀伊國屋書店</span>
             </div>
-            <p className="text-gray-500 text-sm mb-6 leading-relaxed">
-              Founded in 1927 in Tokyo, Kinokuniya USA offers a wide variety of books, magazines, and stationery from Japan. We are proud to bring the rich culture of Japan to the US.
+            <p className="text-sm leading-relaxed text-gray-500">
+              Kinokuniya USA offers the largest selection of Japanese books, Manga, and stationery in the United States. We serve as a bridge between Japanese culture and the world.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-kino-blue hover:text-white transition-colors"><Instagram size={16} /></a>
-              <a href="#" className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-kino-blue hover:text-white transition-colors"><Twitter size={16} /></a>
-              <a href="#" className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-kino-blue hover:text-white transition-colors"><Facebook size={16} /></a>
-              <a href="#" className="w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full hover:bg-kino-blue hover:text-white transition-colors"><Youtube size={16} /></a>
+            <div className="flex space-x-3">
+              {[Instagram, Twitter, Facebook, Youtube].map((Icon, i) => (
+                <a key={i} href="#" className="w-8 h-8 flex items-center justify-center border border-gray-200 rounded-sm text-gray-400 hover:bg-kino-blue hover:text-white hover:border-kino-blue transition-all">
+                  <Icon size={16} />
+                </a>
+              ))}
             </div>
           </div>
           
+          {/* Column 2: Information */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-wider">Shop</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-kino-blue">Books (Japanese)</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Books (English)</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Manga</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Magazines</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Stationery</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Gift Cards</a></li>
+            <h4 className="font-bold text-gray-900 mb-6 text-xs uppercase tracking-widest border-b border-gray-100 pb-2">Information</h4>
+            <ul className="space-y-3 text-sm">
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>About Us</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Store Locations</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Careers</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Contact Us</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Privacy Policy</a></li>
             </ul>
           </div>
 
+          {/* Column 3: Shopping */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-wider">Help & Info</h4>
-            <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-kino-blue">Store Locations</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Membership</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Events</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Careers</a></li>
-              <li><a href="#" className="hover:text-kino-blue">Contact Us</a></li>
-              <li><a href="#" className="hover:text-kino-blue">FAQ</a></li>
+            <h4 className="font-bold text-gray-900 mb-6 text-xs uppercase tracking-widest border-b border-gray-100 pb-2">Shopping</h4>
+            <ul className="space-y-3 text-sm">
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Membership</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Gift Cards</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Shipping & Returns</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>FAQ</a></li>
+              <li><a href="#" className="hover:text-kino-blue transition-colors flex items-center group"><ChevronRight size={12} className="mr-2 text-gray-300 group-hover:text-kino-blue"/>Advanced Search</a></li>
             </ul>
           </div>
 
-          <div>
-             <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-wider">Locations</h4>
-             <ul className="space-y-3 text-sm text-gray-600">
-               <li className="flex items-start">
-                 <MapPin size={14} className="mr-2 mt-0.5 text-gray-400" />
-                 <span>New York</span>
-               </li>
-               <li className="flex items-start">
-                 <MapPin size={14} className="mr-2 mt-0.5 text-gray-400" />
-                 <span>San Francisco</span>
-               </li>
-               <li className="flex items-start">
-                 <MapPin size={14} className="mr-2 mt-0.5 text-gray-400" />
-                 <span>Los Angeles</span>
-               </li>
-               <li className="flex items-start">
-                 <MapPin size={14} className="mr-2 mt-0.5 text-gray-400" />
-                 <span>Seattle</span>
-               </li>
-             </ul>
+          {/* Column 4: Newsletter */}
+          <div className="bg-gray-50 p-6 rounded-sm border border-gray-100">
+             <h4 className="font-bold text-gray-900 mb-2 text-sm">Newsletter</h4>
+             <p className="text-xs text-gray-500 mb-4">Subscribe to receive updates on new arrivals and special events.</p>
+             <div className="flex flex-col space-y-2">
+               <input type="email" placeholder="Email Address" className="bg-white border border-gray-300 px-3 py-2 text-xs w-full focus:outline-none focus:border-kino-blue" />
+               <button className="bg-gray-800 text-white px-4 py-2 text-xs font-bold hover:bg-kino-blue transition-colors uppercase tracking-wide">
+                 Subscribe
+               </button>
+             </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Kinokuniya Book Stores of America Co., Ltd. All Rights Reserved.</p>
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 uppercase tracking-wider">
+          <p>&copy; {new Date().getFullYear()} Kinokuniya Book Stores of America Co., Ltd.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-kino-blue">Privacy Policy</a>
-            <a href="#" className="hover:text-kino-blue">Terms of Service</a>
-            <a href="#" className="hover:text-kino-blue">Sitemap</a>
+            <a href="#" className="hover:text-gray-600">Terms of Use</a>
+            <a href="#" className="hover:text-gray-600">Copyright</a>
+            <a href="#" className="hover:text-gray-600">Site Map</a>
           </div>
         </div>
       </div>

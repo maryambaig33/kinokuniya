@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, Search, ShoppingBag, X, MapPin, User, Globe } from 'lucide-react';
+import { Menu, Search, ShoppingBag, X, MapPin, User, Globe, ChevronDown } from 'lucide-react';
 import { CartItem } from '../types';
 import { CATEGORIES } from '../constants';
 
@@ -15,112 +15,129 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, onCategorySelect }) =
   const navLinks = CATEGORIES.filter(c => c !== 'All');
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md font-sans">
-      {/* Utility Bar */}
-      <div className="bg-kino-blue text-white text-xs py-2 px-4 hidden md:block">
+    <nav className="sticky top-0 z-50 font-sans shadow-md">
+      {/* 1. Top Utility Bar - Gray Background */}
+      <div className="bg-gray-100 text-gray-600 text-[11px] py-1.5 px-4 hidden md:block border-b border-gray-200">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex space-x-6">
-            <span className="flex items-center cursor-pointer hover:text-gray-300"><MapPin size={12} className="mr-1"/> Stores & Events</span>
-            <span className="flex items-center cursor-pointer hover:text-gray-300"><User size={12} className="mr-1"/> Membership</span>
-            <span className="flex items-center cursor-pointer hover:text-gray-300"><Globe size={12} className="mr-1"/> 日本語 (Japanese)</span>
+            <span className="flex items-center cursor-pointer hover:text-kino-blue transition-colors">
+              <MapPin size={12} className="mr-1 text-gray-500"/> Store Locations & Events
+            </span>
+            <span className="flex items-center cursor-pointer hover:text-kino-blue transition-colors">
+              <User size={12} className="mr-1 text-gray-500"/> Membership Card
+            </span>
+            <span className="flex items-center cursor-pointer hover:text-kino-blue transition-colors">
+              <Globe size={12} className="mr-1 text-gray-500"/> 日本語 (Japanese)
+            </span>
           </div>
           <div className="flex space-x-4">
-             <a href="#" className="hover:text-gray-300">Log In</a>
-             <span className="text-gray-500">|</span>
-             <a href="#" className="hover:text-gray-300">Contact Us</a>
+             <a href="#" className="hover:text-kino-blue transition-colors">Log In</a>
+             <span className="text-gray-300">|</span>
+             <a href="#" className="hover:text-kino-blue transition-colors">Contact Us</a>
           </div>
         </div>
       </div>
 
-      {/* Main Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="flex items-center justify-between h-20">
-          
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-kino-blue hover:bg-gray-100 focus:outline-none"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
-
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center cursor-pointer group" onClick={() => onCategorySelect('All')}>
-            <div className="bg-kino-blue text-white p-2 mr-3 group-hover:bg-blue-900 transition-colors">
-              <span className="font-bold text-2xl tracking-widest block leading-none">KI</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-xl leading-none tracking-wide text-kino-blue">KINOKUNIYA</span>
-              <span className="text-[10px] text-gray-500 tracking-[0.2em] leading-none font-jp mt-1">紀伊國屋書店</span>
-            </div>
-          </div>
-
-          {/* Desktop Search */}
-          <div className="hidden md:flex flex-1 max-w-lg mx-8 relative">
-              <input 
-                type="text" 
-                placeholder="Search by title, author, or keyword..." 
-                className="w-full bg-gray-100 border border-gray-200 rounded-sm py-2 pl-4 pr-10 text-sm focus:outline-none focus:bg-white focus:border-kino-blue transition-all placeholder-gray-500"
-              />
-              <button className="absolute right-0 top-0 h-full px-3 text-gray-500 hover:text-kino-blue">
-                <Search size={18} />
+      {/* 2. Main Header - Logo & Search */}
+      <div className="bg-white py-4 md:py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            
+            {/* Mobile Menu Button */}
+            <div className="flex items-center md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 -ml-2 text-kino-blue focus:outline-none"
+              >
+                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
-          </div>
+            </div>
 
-          {/* Icons */}
-          <div className="flex items-center space-x-6">
-            <button className="hidden md:flex flex-col items-center text-gray-600 hover:text-kino-blue">
-               <User size={20} />
-               <span className="text-[10px] uppercase font-bold mt-1">Account</span>
-            </button>
-            <button className="relative flex flex-col items-center text-gray-600 hover:text-kino-blue group">
-              <div className="relative">
-                <ShoppingBag size={20} />
-                {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 inline-flex items-center justify-center w-4 h-4 text-[10px] font-bold text-white bg-kino-accent rounded-full">
-                    {totalItems}
-                  </span>
-                )}
+            {/* Logo */}
+            <div className="flex-shrink-0 flex items-center cursor-pointer group" onClick={() => onCategorySelect('All')}>
+              <div className="bg-kino-blue text-white px-3 py-2 mr-3 group-hover:bg-blue-900 transition-colors hidden sm:block">
+                <span className="font-bold text-2xl tracking-widest block leading-none font-serif">K</span>
               </div>
-              <span className="text-[10px] uppercase font-bold mt-1 hidden md:block">Cart</span>
-            </button>
+              <div className="flex flex-col items-start">
+                <span className="font-bold text-2xl leading-none tracking-tight text-kino-blue font-serif">KINOKUNIYA</span>
+                <span className="text-[11px] text-gray-500 tracking-[0.3em] leading-none font-jp mt-1">紀伊國屋書店</span>
+              </div>
+            </div>
+
+            {/* Desktop Search */}
+            <div className="hidden md:flex flex-1 max-w-xl mx-8 relative">
+                <div className="flex w-full">
+                  <div className="relative flex-1">
+                    <input 
+                      type="text" 
+                      placeholder="Search by Title, Author, Keyword or ISBN" 
+                      className="w-full bg-white border border-r-0 border-gray-300 py-2.5 pl-4 pr-4 text-sm focus:outline-none focus:border-kino-blue transition-colors placeholder-gray-400 rounded-l-sm"
+                    />
+                  </div>
+                  <button className="bg-kino-blue text-white px-6 py-2 rounded-r-sm hover:bg-blue-900 transition-colors">
+                    <Search size={18} />
+                  </button>
+                </div>
+            </div>
+
+            {/* Cart & Account Icons */}
+            <div className="flex items-center space-x-6">
+              <button className="hidden md:flex flex-col items-center text-gray-500 hover:text-kino-blue transition-colors group">
+                 <User size={24} strokeWidth={1.5} />
+                 <span className="text-[10px] uppercase font-bold mt-1 group-hover:underline">Account</span>
+              </button>
+              <button className="flex flex-col items-center text-gray-500 hover:text-kino-blue transition-colors group relative">
+                <div className="relative">
+                  <ShoppingBag size={24} strokeWidth={1.5} />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-1 -right-2 inline-flex items-center justify-center min-w-[18px] h-[18px] text-[10px] font-bold text-white bg-kino-accent rounded-full px-1 border-2 border-white">
+                      {totalItems}
+                    </span>
+                  )}
+                </div>
+                <span className="text-[10px] uppercase font-bold mt-1 hidden md:block group-hover:underline">Cart</span>
+              </button>
+            </div>
+          </div>
+          
+          {/* Mobile Search (visible only on small screens) */}
+          <div className="mt-4 md:hidden relative">
+             <input 
+                type="text" 
+                placeholder="Search..." 
+                className="w-full bg-gray-50 border border-gray-300 rounded-sm py-2 pl-4 pr-10 text-sm focus:border-kino-blue focus:outline-none"
+              />
+              <Search size={16} className="absolute right-3 top-2.5 text-gray-400" />
           </div>
         </div>
       </div>
 
-      {/* Desktop Category Nav */}
-      <div className="hidden md:block border-t border-gray-100 bg-white">
+      {/* 3. Main Navigation Bar - Blue Background (Official Style) */}
+      <div className="hidden md:block bg-kino-blue text-white shadow-inner">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
-            <div className="flex items-center justify-center space-x-8 h-12">
+            <div className="flex items-center space-x-8 h-12">
+              <div className="flex items-center font-bold text-sm tracking-wide cursor-pointer border-r border-blue-900 pr-6 h-full hover:bg-blue-900 transition-colors">
+                <Menu size={16} className="mr-2"/> DEPARTMENTS
+              </div>
               {navLinks.map((link) => (
                 <button
                   key={link}
                   onClick={() => onCategorySelect(link)}
-                  className="text-sm font-medium text-gray-600 hover:text-kino-blue hover:border-b-2 hover:border-kino-blue h-full px-1 transition-all uppercase tracking-wide"
+                  className="text-sm font-medium text-blue-100 hover:text-white h-full px-2 transition-colors uppercase tracking-wide flex items-center relative group"
                 >
                   {link}
+                  {/* Underline effect */}
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                 </button>
               ))}
             </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 absolute w-full left-0 shadow-lg">
-          <div className="px-4 py-2">
-             <div className="relative mb-4 mt-2">
-                <input 
-                  type="text" 
-                  placeholder="Search..." 
-                  className="w-full bg-gray-100 border border-gray-200 rounded-sm py-2 pl-4 pr-10 text-sm"
-                />
-                <Search size={16} className="absolute right-3 top-2.5 text-gray-400" />
-            </div>
-          </div>
-          <div className="px-2 pb-3 space-y-1">
+        <div className="md:hidden bg-white border-t border-gray-200 absolute w-full left-0 shadow-xl z-50 h-screen">
+          <div className="flex flex-col divide-y divide-gray-100">
             {navLinks.map((link) => (
               <button
                 key={link}
@@ -128,15 +145,17 @@ export const Navbar: React.FC<NavbarProps> = ({ cartItems, onCategorySelect }) =
                   onCategorySelect(link);
                   setIsMenuOpen(false);
                 }}
-                className="block w-full text-left px-3 py-3 border-b border-gray-100 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-kino-blue"
+                className="block w-full text-left px-5 py-4 text-base font-bold text-gray-800 hover:bg-gray-50 hover:text-kino-blue flex justify-between items-center"
               >
                 {link}
+                <ChevronDown size={16} className="-rotate-90 text-gray-300"/>
               </button>
             ))}
-            <div className="pt-4 px-3 text-sm text-gray-500 space-y-3">
-              <div className="flex items-center"><MapPin size={16} className="mr-2"/> Stores</div>
-              <div className="flex items-center"><User size={16} className="mr-2"/> Membership</div>
-              <div className="flex items-center"><Globe size={16} className="mr-2"/> 日本語</div>
+            <div className="bg-gray-50 p-5 space-y-4">
+              <div className="font-bold text-xs text-gray-400 uppercase tracking-wider mb-2">My Account</div>
+              <div className="flex items-center text-sm text-gray-600"><User size={16} className="mr-3"/> Sign In / Register</div>
+              <div className="flex items-center text-sm text-gray-600"><MapPin size={16} className="mr-3"/> Store Locations</div>
+              <div className="flex items-center text-sm text-gray-600"><Globe size={16} className="mr-3"/> 日本語 (Japanese)</div>
             </div>
           </div>
         </div>

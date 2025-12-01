@@ -1,54 +1,80 @@
 import React from 'react';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Star, CreditCard } from 'lucide-react';
 
 export const Hero: React.FC = () => {
   return (
-    <div className="bg-kino-light border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div className="bg-gray-100 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           
-          {/* Main Feature Banner */}
-          <div className="lg:col-span-2 relative rounded-lg overflow-hidden bg-white shadow-sm border border-gray-200 group cursor-pointer">
-             <div className="absolute inset-0 bg-gradient-to-r from-kino-blue to-transparent opacity-90 z-10"></div>
+          {/* Main Carousel / Feature Banner (8 cols) */}
+          <div className="lg:col-span-8 relative rounded-sm overflow-hidden bg-white shadow-sm group cursor-pointer h-[360px] md:h-[450px]">
              <img 
-               src="https://images.unsplash.com/photo-1614849963640-9b93052e8550?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-               alt="Manga Collection" 
-               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+               src="https://images.unsplash.com/photo-1560942485-b2a11cc13456?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+               alt="Japanese Literature" 
+               className="absolute inset-0 w-full h-full object-cover"
              />
-             <div className="relative z-20 p-8 md:p-12 h-full flex flex-col justify-center items-start text-white">
-                <span className="bg-kino-accent text-white text-xs font-bold px-2 py-1 mb-4 uppercase tracking-wider">Featured</span>
-                <h2 className="text-3xl md:text-5xl font-bold mb-4 font-jp">Manga of the Month</h2>
-                <p className="text-lg text-blue-100 mb-8 max-w-md">Discover the latest hits from Shonen Jump, Kodansha, and indie publishers directly from Japan.</p>
-                <button className="bg-white text-kino-blue px-6 py-3 rounded-sm font-bold hover:bg-gray-100 transition-colors flex items-center">
-                  Shop Manga <ArrowRight size={16} className="ml-2" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+             
+             <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
+                <span className="inline-block bg-kino-accent text-white text-[10px] font-bold px-2 py-1 mb-3 uppercase tracking-wider">Monthly Highlight</span>
+                <h2 className="text-3xl md:text-5xl font-bold mb-2 text-white font-jp">Discover Japanese Literature</h2>
+                <p className="text-gray-200 mb-6 max-w-lg text-sm md:text-base">Explore our curated collection of award-winning novels, from Haruki Murakami to upcoming authors making waves in Tokyo.</p>
+                <button className="bg-white text-gray-900 px-6 py-3 rounded-sm font-bold hover:bg-kino-blue hover:text-white transition-colors text-sm uppercase tracking-wide">
+                  View Collection
                 </button>
              </div>
           </div>
 
-          {/* Side Promotions */}
-          <div className="space-y-6 flex flex-col">
+          {/* Sidebar Promotions (4 cols) */}
+          <div className="lg:col-span-4 flex flex-col gap-6 h-[450px]">
             
-            {/* Membership Card Promo */}
-            <div className="bg-kino-blue rounded-lg overflow-hidden flex-1 shadow-sm border border-gray-200 p-6 flex flex-col justify-center relative">
-               <div className="absolute top-0 right-0 p-4 opacity-10">
-                 <Star size={120} />
+            {/* Membership Promo - Modeled after the real card promo */}
+            <div className="bg-kino-blue rounded-sm overflow-hidden flex-1 shadow-sm p-6 relative flex flex-col justify-between border-t-4 border-kino-gold">
+               <div className="relative z-10">
+                  <div className="flex items-center space-x-2 mb-3">
+                     <CreditCard className="text-kino-gold" size={20} />
+                     <h3 className="text-lg font-bold text-white uppercase tracking-wide">Membership</h3>
+                  </div>
+                  <p className="text-blue-100 text-sm leading-relaxed mb-4">
+                    Join today and receive <span className="text-white font-bold">10% OFF</span> most books and magazines every time you shop.
+                  </p>
                </div>
-               <h3 className="text-xl font-bold text-white mb-2">Kinokuniya Membership</h3>
-               <p className="text-blue-200 text-sm mb-4">Save 10% on most items every day. Exclusive offers and events for members.</p>
-               <button className="w-fit border border-white/30 text-white px-4 py-2 rounded-sm text-sm hover:bg-white hover:text-kino-blue transition-colors">
-                 Join Today
-               </button>
+               
+               <div className="bg-white/10 p-4 rounded-sm border border-white/20 backdrop-blur-sm">
+                 <div className="flex justify-between items-end">
+                   <div>
+                     <p className="text-[10px] text-gray-300 uppercase">Annual Fee</p>
+                     <p className="text-2xl font-bold text-white">$25.00</p>
+                   </div>
+                   <button className="bg-kino-gold text-kino-blue px-4 py-2 rounded-sm text-xs font-bold hover:bg-white transition-colors">
+                     JOIN NOW
+                   </button>
+                 </div>
+               </div>
+               
+               {/* Abstract BG pattern */}
+               <div className="absolute top-0 right-0 -mt-4 -mr-4 text-white opacity-5">
+                 <Star size={150} />
+               </div>
             </div>
 
-            {/* New Arrivals Promo */}
-            <div className="bg-white rounded-lg overflow-hidden flex-1 shadow-sm border border-gray-200 p-6 flex flex-col justify-center relative">
-               <div className="absolute inset-0 bg-yellow-50/50"></div>
-               <div className="relative z-10">
-                 <h3 className="text-xl font-bold text-gray-900 mb-2 font-jp">New Stationery Arrivals</h3>
-                 <p className="text-gray-600 text-sm mb-4">High-quality pens, notebooks, and washi tape from Japan.</p>
-                 <button className="text-kino-blue font-bold text-sm hover:underline flex items-center">
-                   View Collection <ArrowRight size={14} className="ml-1" />
-                 </button>
+            {/* Featured Item / Secondary Promo */}
+            <div className="bg-white rounded-sm overflow-hidden flex-1 shadow-sm border border-gray-200 p-6 flex flex-col justify-center relative group cursor-pointer">
+               <div className="absolute inset-0 overflow-hidden">
+                 <img 
+                    src="https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                    className="w-full h-full object-cover opacity-20 group-hover:scale-105 transition-transform duration-700"
+                    alt="Stationery"
+                 />
+               </div>
+               <div className="relative z-10 text-center">
+                 <h3 className="text-xl font-bold text-gray-900 mb-1 font-serif">Stationery World</h3>
+                 <div className="w-10 h-0.5 bg-kino-accent mx-auto mb-3"></div>
+                 <p className="text-gray-600 text-xs mb-4 px-4">Imported high-quality pens, planners, and gifts from Japan.</p>
+                 <span className="text-kino-blue font-bold text-xs hover:underline uppercase tracking-wide">
+                   Shop Stationery
+                 </span>
                </div>
             </div>
 
